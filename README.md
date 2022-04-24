@@ -1,24 +1,24 @@
 # laravel-wechat
 
-微信 SDK for Laravel / Lumen， 基于 [overtrue/wechat](https://github.com/overtrue/wechat)
+微信 SDK for Laravel / Lumen， 基于 [surpaimb/wechat](https://github.com/surpaimb/wechat)
 
 > 交流QQ群：319502940
 
-[![Sponsor me](https://github.com/overtrue/overtrue/blob/master/sponsor-me-button-s.svg?raw=true)](https://github.com/sponsors/overtrue)
+[![Sponsor me](https://github.com/surpaimb/surpaimb/blob/master/sponsor-me-button-s.svg?raw=true)](https://github.com/sponsors/surpaimb)
 
 ## 框架要求
 
-- overtrue/laravel-wechat:^5.1 -> Laravel/Lumen >= 5.1
-- overtrue/laravel-wechat:^6.0 -> Laravel/Lumen >= 7.0
+- surpaimb/laravel-wechat:^5.1 -> Laravel/Lumen >= 5.1
+- surpaimb/laravel-wechat:^6.0 -> Laravel/Lumen >= 7.0
 
 ## 安装
 
 ```shell
-# overtrue/wechat 4.x
-composer require "overtrue/laravel-wechat:^5.1"
+# surpaimb/wechat 4.x
+composer require "surpaimb/laravel-wechat:^5.1"
 
-# overtrue/wechat 5.x
-composer require "overtrue/laravel-wechat:^6.0"
+# surpaimb/wechat 5.x
+composer require "surpaimb/laravel-wechat:^6.0"
 ```
 
 ## 配置
@@ -30,18 +30,18 @@ composer require "overtrue/laravel-wechat:^6.0"
 ```php
 'providers' => [
     // ...
-    Overtrue\LaravelWeChat\ServiceProvider::class,
+    Surpaimb\LaravelWeChat\ServiceProvider::class,
 ],
 'aliases' => [
     // ...
-    'EasyWeChat' => Overtrue\LaravelWeChat\Facade::class,
+    'Surpaimb\WeChat' => Surpaimb\LaravelWeChat\Facade::class,
 ],
 ```
 
 2. 创建配置文件：
 
 ```shell
-php artisan vendor:publish --provider="Overtrue\LaravelWeChat\ServiceProvider"
+php artisan vendor:publish --provider="Surpaimb\LaravelWeChat\ServiceProvider"
 ```
 
 3. 修改应用根目录下的 `config/wechat.php` 中对应的参数即可。
@@ -53,10 +53,10 @@ php artisan vendor:publish --provider="Overtrue\LaravelWeChat\ServiceProvider"
 1. 在 `bootstrap/app.php` 中 82 行左右：
 
 ```php
-$app->register(Overtrue\LaravelWeChat\ServiceProvider::class);
+$app->register(Surpaimb\LaravelWeChat\ServiceProvider::class);
 ```
 
-2. 如果你习惯使用 `config/wechat.php` 来配置的话，将 `vendor/overtrue/laravel-wechat/src/config.php` 拷贝到`项目根目录/config`目录下，并将文件名改成`wechat.php`。
+2. 如果你习惯使用 `config/wechat.php` 来配置的话，将 `vendor/surpaimb/laravel-wechat/src/config.php` 拷贝到`项目根目录/config`目录下，并将文件名改成`wechat.php`。
 
 ## 使用
 
@@ -71,7 +71,7 @@ protected $except = [
 
 下面以接收普通消息为例写一个例子：
 
-> 假设您的域名为 `overtrue.me` 那么请登录微信公众平台 “开发者中心” 修改 “URL（服务器配置）” 为： `http://overtrue.me/wechat`。
+> 假设您的域名为 `surpaimb.me` 那么请登录微信公众平台 “开发者中心” 修改 “URL（服务器配置）” 为： `http://surpaimb.me/wechat`。
 
 路由：
 
@@ -100,11 +100,11 @@ class WeChatController extends Controller
      */
     public function serve()
     {
-        Log::info('request arrived.'); # 注意：Log 为 Laravel 组件，所以它记的日志去 Laravel 日志看，而不是 EasyWeChat 日志
+        Log::info('request arrived.'); # 注意：Log 为 Laravel 组件，所以它记的日志去 Laravel 日志看，而不是 Surpaimb\WeChat 日志
 
         $app = app('wechat.official_account');
         $app->server->push(function($message){
-            return "欢迎关注 overtrue！";
+            return "欢迎关注 surpaimb！";
         });
 
         return $app->server->serve();
@@ -112,21 +112,21 @@ class WeChatController extends Controller
 }
 ```
 
-> 上面例子里的 Log 是 Laravel 组件，所以它的日志不会写到 EasyWeChat 里的，建议把 wechat 的日志配置到 Laravel 同一个日志文件，便于调试。
+> 上面例子里的 Log 是 Laravel 组件，所以它的日志不会写到 Surpaimb\WeChat 里的，建议把 wechat 的日志配置到 Laravel 同一个日志文件，便于调试。
 
 ### 我们有以下方式获取 SDK 的服务实例
 
 ##### 使用外观
 
 ```php
-  $officialAccount = \EasyWeChat::officialAccount(); // 公众号
-  $work = \EasyWeChat::work(); // 企业微信
-  $payment = \EasyWeChat::payment(); // 微信支付
-  $openPlatform = \EasyWeChat::openPlatform(); // 开放平台
-  $miniProgram = \EasyWeChat::miniProgram(); // 小程序
+  $officialAccount = \Surpaimb\WeChat::officialAccount(); // 公众号
+  $work = \Surpaimb\WeChat::work(); // 企业微信
+  $payment = \Surpaimb\WeChat::payment(); // 微信支付
+  $openPlatform = \Surpaimb\WeChat::openPlatform(); // 开放平台
+  $miniProgram = \Surpaimb\WeChat::miniProgram(); // 小程序
   
   // 均支持传入配置账号名称
-  \EasyWeChat::officialAccount('foo'); // `foo` 为配置文件中的名称，默认为 `default`
+  \Surpaimb\WeChat::officialAccount('foo'); // `foo` 为配置文件中的名称，默认为 `default`
   //...
 ```
 
@@ -140,7 +140,7 @@ class WeChatController extends Controller
 ```php
 protected $routeMiddleware = [
     // ...
-    'wechat.oauth' => \Overtrue\LaravelWeChat\Middleware\OAuthAuthenticate::class,
+    'wechat.oauth' => \Surpaimb\LaravelWeChat\Middleware\OAuthAuthenticate::class,
 ];
 ```
 
@@ -182,7 +182,7 @@ Route::group(['middleware' => ['wechat.oauth:default,snsapi_userinfo']], functio
 
 ```php
 use Illuminate\Support\Arr;
-use Overtrue\Socialite\User as SocialiteUser;
+use surpaimb\Socialite\User as SocialiteUser;
 
 $user = new SocialiteUser([
                 'id' => Arr::get($user, 'openid'),
@@ -208,7 +208,7 @@ session(['wechat.oauth_user.default' => $user]); // 同理，`default` 可以更
 
 > 你可以监听相应的事件，并对事件发生后执行相应的操作。
 
-- OAuth 网页授权：`Overtrue\LaravelWeChat\Events\WeChatUserAuthorized`
+- OAuth 网页授权：`Surpaimb\LaravelWeChat\Events\WeChatUserAuthorized`
 
 ```php
 // 该事件有以下属性
@@ -225,7 +225,7 @@ $event->account; // 当前中间件所使用的账号，对应在配置文件中
 ```php
 'open_platform' => [
     'uri' => 'serve',
-    'action' => Overtrue\LaravelWeChat\Controllers\OpenPlatformController::class,
+    'action' => Surpaimb\LaravelWeChat\Controllers\OpenPlatformController::class,
     'attributes' => [
         'prefix' => 'open-platform',
         'middleware' => null,
@@ -235,10 +235,10 @@ $event->account; // 当前中间件所使用的账号，对应在配置文件中
 
 Tips: 默认的控制器会根据微信开放平台的推送内容触发如下事件，你可以监听相应的事件并进行处理：
 
-- 授权方成功授权：`Overtrue\LaravelWeChat\Events\OpenPlatform\Authorized`
-- 授权方更新授权：`Overtrue\LaravelWeChat\Events\OpenPlatform\UpdateAuthorized`
-- 授权方取消授权：`Overtrue\LaravelWeChat\Events\OpenPlatform\Unauthorized`
-- 开放平台推送 VerifyTicket：`Overtrue\LaravelWeChat\Events\OpenPlatform\VerifyTicketRefreshed`
+- 授权方成功授权：`Surpaimb\LaravelWeChat\Events\OpenPlatform\Authorized`
+- 授权方更新授权：`Surpaimb\LaravelWeChat\Events\OpenPlatform\UpdateAuthorized`
+- 授权方取消授权：`Surpaimb\LaravelWeChat\Events\OpenPlatform\Unauthorized`
+- 开放平台推送 VerifyTicket：`Surpaimb\LaravelWeChat\Events\OpenPlatform\VerifyTicketRefreshed`
 
 ```php
 // 事件有如下属性
@@ -253,15 +253,15 @@ $message = $event->payload; // 开放平台事件通知内容
 
 ## :heart: Sponsor me 
 
-[![Sponsor me](https://github.com/overtrue/overtrue/blob/master/sponsor-me.svg?raw=true)](https://github.com/sponsors/overtrue)
+[![Sponsor me](https://github.com/surpaimb/surpaimb/blob/master/sponsor-me.svg?raw=true)](https://github.com/sponsors/surpaimb)
 
-如果你喜欢我的项目并想支持它，[点击这里 :heart:](https://github.com/sponsors/overtrue)
+如果你喜欢我的项目并想支持它，[点击这里 :heart:](https://github.com/sponsors/surpaimb)
 
 ## Project supported by JetBrains
 
 Many thanks to Jetbrains for kindly providing a license for me to work on this and other open-source projects.
 
-[![](https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.svg)](https://www.jetbrains.com/?from=https://github.com/overtrue)
+[![](https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.svg)](https://www.jetbrains.com/?from=https://github.com/surpaimb)
 
 
 ## PHP 扩展包开发

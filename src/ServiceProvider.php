@@ -9,14 +9,14 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Overtrue\LaravelWeChat;
+namespace Surpaimb\LaravelWeChat;
 
-use EasyWeChat\MiniProgram\Application as MiniProgram;
-use EasyWeChat\OfficialAccount\Application as OfficialAccount;
-use EasyWeChat\OpenPlatform\Application as OpenPlatform;
-use EasyWeChat\OpenWork\Application as OpenWork;
-use EasyWeChat\Payment\Application as Payment;
-use EasyWeChat\Work\Application as Work;
+use Surpaimb\WeChat\MiniProgram\Application as MiniProgram;
+use Surpaimb\WeChat\OfficialAccount\Application as OfficialAccount;
+use Surpaimb\WeChat\OpenPlatform\Application as OpenPlatform;
+use Surpaimb\WeChat\OpenWork\Application as OpenWork;
+use Surpaimb\WeChat\Payment\Application as Payment;
+use Surpaimb\WeChat\Work\Application as Work;
 use Illuminate\Foundation\Application as LaravelApplication;
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 use Laravel\Lumen\Application as LumenApplication;

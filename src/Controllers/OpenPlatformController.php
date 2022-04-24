@@ -9,18 +9,18 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Overtrue\LaravelWeChat\Controllers;
+namespace Surpaimb\LaravelWeChat\Controllers;
 
-use EasyWeChat\OpenPlatform\Application;
-use EasyWeChat\OpenPlatform\Server\Guard;
-use Overtrue\LaravelWeChat\Events\OpenPlatform as Events;
+use Surpaimb\WeChat\OpenPlatform\Application;
+use Surpaimb\WeChat\OpenPlatform\Server\Guard;
+use Surpaimb\LaravelWeChat\Events\OpenPlatform as Events;
 
 class OpenPlatformController extends Controller
 {
     /**
      * Register for open platform.
      *
-     * @param \EasyWeChat\OpenPlatform\Application $application
+     * @param \Surpaimb\WeChat\OpenPlatform\Application $application
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */

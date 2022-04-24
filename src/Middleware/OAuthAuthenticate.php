@@ -9,14 +9,14 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Overtrue\LaravelWeChat\Middleware;
+namespace Surpaimb\LaravelWeChat\Middleware;
 
 use Closure;
 use http\Env\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
-use Overtrue\LaravelWeChat\Events\WeChatUserAuthorized;
+use Surpaimb\LaravelWeChat\Events\WeChatUserAuthorized;
 
 /**
  * Class OAuthAuthenticate: 微信公众号, 企业微信的网页应用。

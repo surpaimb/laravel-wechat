@@ -9,7 +9,7 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Overtrue\LaravelWeChat;
+namespace Surpaimb\LaravelWeChat;
 
 use Illuminate\Support\Facades\Facade as LaravelFacade;
 
@@ -31,7 +31,7 @@ class Facade extends LaravelFacade
     }
 
     /**
-     * @return \EasyWeChat\OfficialAccount\Application
+     * @return \Surpaimb\WeChat\OfficialAccount\Application
      */
     public static function officialAccount($name = '')
     {
@@ -39,7 +39,7 @@ class Facade extends LaravelFacade
     }
 
     /**
-     * @return \EasyWeChat\Work\Application
+     * @return \Surpaimb\WeChat\Work\Application
      */
     public static function work($name = '')
     {
@@ -47,7 +47,7 @@ class Facade extends LaravelFacade
     }
 
     /**
-     * @return \EasyWeChat\Payment\Application
+     * @return \Surpaimb\WeChat\Payment\Application
      */
     public static function payment($name = '')
     {
@@ -55,7 +55,7 @@ class Facade extends LaravelFacade
     }
 
     /**
-     * @return \EasyWeChat\MiniProgram\Application
+     * @return \Surpaimb\WeChat\MiniProgram\Application
      */
     public static function miniProgram($name = '')
     {
@@ -63,7 +63,7 @@ class Facade extends LaravelFacade
     }
 
     /**
-     * @return \EasyWeChat\OpenPlatform\Application
+     * @return \Surpaimb\WeChat\OpenPlatform\Application
      */
     public static function openPlatform($name = '')
     {
