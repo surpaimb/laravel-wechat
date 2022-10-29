@@ -69,4 +69,12 @@ class Facade extends LaravelFacade
     {
         return $name ? app('wechat.open_platform.'.$name) : app('wechat.open_platform');
     }
+
+    /**
+     * @return \Surpaimb\WeChat\Channel\Application
+     */
+    public static function channel($name = '')
+    {
+        return $name ? app('wechat.channel.'.$name) : app('wechat.channel');
+    }
 }

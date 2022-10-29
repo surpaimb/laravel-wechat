@@ -17,6 +17,7 @@ use Surpaimb\WeChat\OpenPlatform\Application as OpenPlatform;
 use Surpaimb\WeChat\OpenWork\Application as OpenWork;
 use Surpaimb\WeChat\Payment\Application as Payment;
 use Surpaimb\WeChat\Work\Application as Work;
+use Surpaimb\WeChat\Channel\Application as Channel;
 use Illuminate\Foundation\Application as LaravelApplication;
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 use Laravel\Lumen\Application as LumenApplication;
@@ -65,6 +66,7 @@ class ServiceProvider extends LaravelServiceProvider
             'payment' => Payment::class,
             'open_platform' => OpenPlatform::class,
             'open_work' => OpenWork::class,
+            'channel' => Channel::class,
         ];
 
         foreach ($apps as $name => $class) {

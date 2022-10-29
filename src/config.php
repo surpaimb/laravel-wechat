@@ -143,4 +143,16 @@ return [
     //          //...
     //      ],
     // ],
+
+    /*
+     * 视频号橱窗
+     */
+    // 'channel' => [
+    //     'default' => [
+    //         'app_id'  => env('WECHAT_CHANNEL_WINDOW_APPID', ''),
+    //         'secret'  => env('WECHAT_CHANNEL_WINDOW_SECRET', ''),
+    //         'token'   => env('WECHAT_CHANNEL_WINDOW_TOKEN', ''),
+    //         'aes_key' => env('WECHAT_CHANNEL_WINDOW_AES_KEY', ''),
+    //     ],
+    // ],
 ];
